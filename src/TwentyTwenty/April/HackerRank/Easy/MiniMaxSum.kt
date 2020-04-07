@@ -3,7 +3,7 @@ package TwentyTwenty.April.HackerRank.Easy
 // Complete the miniMaxSum function below.
 //Score: 10/10
 //https://www.hackerrank.com/challenges/mini-max-sum/problem
-fun miniMaxSum(arr: Array<Int>): {
+fun miniMaxSum(arr: Array<Int>) {
     var biggestNum:Long = arr[0].toLong()
     var smallestNum:Long = arr[0].toLong()
     var sum:Long = 0
