@@ -1,6 +1,7 @@
 package TwentyTwenty.April.HackerRank.Easy
 
 // Complete the miniMaxSum function below.
+//4-7-2020
 //Score: 10/10
 //https://www.hackerrank.com/challenges/mini-max-sum/problem
 fun miniMaxSum(arr: Array<Int>) {
