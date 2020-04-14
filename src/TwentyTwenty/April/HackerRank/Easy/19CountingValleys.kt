@@ -7,9 +7,15 @@ package TwentyTwenty.April.HackerRank.Easy
 // Early early early
 //Woke up at 2AM
 //https://www.hackerrank.com/challenges/counting-valleys/problem
+//traverseHike: Huge stack size quick implementation
+//traverseHike2: Recursive while loop, more efficient implementation
+//TODO: How do I process a string with a million characters?
+
+var classS = ""
 
 fun countingValleys(n: Int, s: String): Int {
-    return traverseHike(s)
+    classS = s
+    return traverseHike2()
 
 }
 
@@ -36,7 +42,50 @@ pathOfAscent: Boolean = false): Int{
     return traverseHike(s, sIdx+1, newValleyCt, height+ heightOffset, newPath)
 }
 
+//The previous method can accumulate a huge stack size let's try to create an optimal solution while we're here
+fun traverseHike2(
+                 sIdx: Int = 0,
+                 valleyCt:Int = 0): Int{
+    if (sIdx == classS.length) return valleyCt
+    var newHeight = 0
+    var newStrIdx = sIdx
+
+
+    var lastElementWasCriticalValue = false
+    do{
+        lastElementWasCriticalValue = newHeight == -1
+
+
+        newHeight += convertCharIntoNewHeight(classS, newStrIdx)
+
+
+        newStrIdx++
+    }while (newHeight != 0 && newStrIdx != classS.length)
+    var newValleyCt = valleyCt
+    if (lastElementWasCriticalValue) newValleyCt++
+    return traverseHike2(newStrIdx, newValleyCt)
+}
+
+private fun convertCharIntoNewHeight(s: String, sIdx: Int): Int {
+    return when (s[sIdx]) {
+        'U' -> 1
+        'D' -> -1
+        else -> 0
+    }
+}
+
 fun main(args: Array<String>) {
-    println(traverseHike("UDDDUDUU"))
+    //Interesting null terminator
+    val testStr = "Test"
+    val newTestStr = testStr.substring(4)
+    println(newTestStr)
+
+
+
+
+    //Case where the index out of bound returns a height of 0
+    println(countingValleys(8, "UDDDUDUU"))
+    println(countingValleys(12, "DDUUDDUDUUUD"))
+    println(countingValleys(10, "DUDDDUUDUU"))
 
 }
