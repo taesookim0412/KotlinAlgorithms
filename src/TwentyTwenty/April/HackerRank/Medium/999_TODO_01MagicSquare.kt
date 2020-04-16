@@ -4,13 +4,13 @@ import java.util.*
 
 //wip
 //create recursive fun?
+var rowSum = Array<Int>(3){0}
+var colSum = Array<Int>(3){0}
+var diagsSum = Array<Int>(2){0}
+
 fun formingMagicSquare(s: Array<Array<Int>>): Int {
     //3x3 array of integers
     //for every row
-
-    var rowSum = Array<Int>(3){0}
-    var colSum = Array<Int>(3){0}
-    var diagsSum = Array<Int>(2){0}
 
     for (i in 0..s.size-1){
         diagsSum[0] += s[i][i]
@@ -35,6 +35,11 @@ fun formingMagicSquare(s: Array<Array<Int>>): Int {
     avgs /= 8
     var magicConstant = avgs
 
+    //How would this algorithm be created?
+    /* Attempt to swap elements from incorrect index values
+    *
+    *
+    * */
     //Recursively alter this
     for (i in rowSum.indices){
         if (rowSum[i] != magicConstant){
@@ -47,11 +52,10 @@ fun formingMagicSquare(s: Array<Array<Int>>): Int {
                 //performDiagChangeAndCalculate()
                 //while != magicconstant forall
                 //idk im busy
-
+                fixRowColDiag()
             }
         }
     }
-
 
 
 
@@ -73,6 +77,10 @@ fun formingMagicSquare(s: Array<Array<Int>>): Int {
 
 
     return -1
+}
+
+fun fixRowColDiag(){
+
 }
 
 fun main(args: Array<String>) {
