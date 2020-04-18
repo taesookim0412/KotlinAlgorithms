@@ -1,3 +1,4 @@
+/*
 package TwentyTwenty.April.HackerRank.Medium
 
 import java.util.*
@@ -36,10 +37,11 @@ fun formingMagicSquare(s: Array<Array<Int>>): Int {
     var magicConstant = avgs
 
     //How would this algorithm be created?
-    /* Attempt to swap elements from incorrect index values
+ Attempt to swap elements from incorrect index values
     *
     *
-    * */
+    *
+
     //Recursively alter this
     for (i in rowSum.indices){
         if (rowSum[i] != magicConstant){
@@ -85,6 +87,4 @@ fun fixRowColDiag(){
 
 fun main(args: Array<String>) {
     println(formingMagicSquare(arrayOf(arrayOf(4, 9, 2), arrayOf(3, 5, 7), arrayOf(8, 1, 5))))
-}
-
-//TODO: Keep track of minimum cost
+}*/
