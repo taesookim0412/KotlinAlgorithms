@@ -13,12 +13,12 @@ fun circularArrayRotation(a: Array<Int>, k: Int, queries: Array<Int>): Array<Int
     var k = k
     var newArray = Array<Int>(a.size){0}
     k = k % a.size
-    var upperLimit = newArray.size-k
-    for (i in 0..upperLimit - 1){
+    var upperLimit = newArray.size-k-1
+    for (i in 0..upperLimit){
         newArray[k + i] = a[i]
     }
-    for (i in upperLimit..a.size-1){
-        newArray[i - upperLimit] = a[i]
+    for (i in upperLimit+1..a.size-1){
+        newArray[i - upperLimit - 1] = a[i]
     }
     for (i in 0..queries.size-1){
         queries[i] = newArray[queries[i]]
