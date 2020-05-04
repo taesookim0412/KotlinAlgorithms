@@ -4,6 +4,7 @@ import java.util.*
 
 //05-03-2020
 //30/30
+//https://www.hackerrank.com/challenges/encryption/problem
 fun encryption(s: String): String {
     var s = s.replace(" ", "")
 
