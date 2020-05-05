@@ -3,10 +3,9 @@ package TwentyTwenty.May.HackerRank.Medium
 import java.util.*
 
 //05-04-2020
-//Don't have time to study lexicographical order right now
+//idk should pass
+//2/5
 //https://www.hackerrank.com/challenges/bigger-is-greater/problem
-//Ok dude I have no idea what I'm doing on this problem anyways I'm going to skip this
-//Legit digging a deeper hole
 
 fun biggerIsGreater(w: String): String {
     var cStr = w.toCharArray()
@@ -14,8 +13,54 @@ fun biggerIsGreater(w: String): String {
     //abdc -> acbd instead of acdb (smallest word)
     //0132 -> 0213 instead of 0231
     //0132 -> 0231 -> 0213
+    //Take the int approach
+    //abcd -> abdc
+    //0123 -> 0132
+    //ba -> ba
+    //10 -> 10
 
-    var swapOffset = 1
+    var iStr = Array<Int>(cStr.size) { 0 }
+    w.mapIndexed { i, c ->
+        iStr[i] = c.toInt()
+    }
+
+    var foundPair = false
+    var foundIdx = -1
+    for (i in iStr.size - 1 downTo 0) {
+        for (j in i - 1 downTo 0) {
+            if (iStr[j] < iStr[i]) {
+                //found an occurence
+                var temp = iStr[j]
+                iStr[j] = iStr[i]
+                iStr[i] = temp
+                foundIdx = if (j + 1 == iStr.size) -1 else j + 1
+                foundPair = true
+                break
+            }
+        }
+        if (foundPair) break
+    }
+    if (foundIdx != -1) {
+        for (i in foundIdx..iStr.size - 1) {
+            for (j in i + 1..iStr.size - 1) {
+                if (iStr[j] < iStr[i]) {
+                    var temp = iStr[j]
+                    iStr[j] = iStr[i]
+                    iStr[i] = temp
+                }
+            }
+        }
+    }
+    var retuStr = Array<Char>(iStr.size) { 0.toChar() }
+    iStr.mapIndexed { i, num ->
+        retuStr[i] = num.toChar()
+    }
+    var str = retuStr.joinToString("")
+    if (str == w) return "no answer"
+    return retuStr.joinToString("")
+}
+
+    /*var swapOffset = 1
     for (i in 0..cStr.size-1){
         if (i+1 == cStr.size) break
         if (cStr[i+1].toInt() > cStr[i].toInt() + swapOffset){
@@ -57,8 +102,7 @@ fun biggerIsGreater(w: String): String {
         }
     }
 
-    return "no answer"
-}
+}*/
 
 fun main(args: Array<String>) {
     //lmon
@@ -73,4 +117,8 @@ fun main(args: Array<String>) {
     println(biggerIsGreater("abcd"))
     //fedcbabdc
     println(biggerIsGreater("fedcbabcd"))
+
+    var stra = biggerIsGreater("zedawdvyyfumwpupuinbdbfndyehircmylbaowuptgmw")
+    println(stra == "zedawdvyyfumwpupuinbdbfndyehircmylbaowuptgwm")
+    println(biggerIsGreater("zyyxwwtrrnmlggfeb"))
 }
