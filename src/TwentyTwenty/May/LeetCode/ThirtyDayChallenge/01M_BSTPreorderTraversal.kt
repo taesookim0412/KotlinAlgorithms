@@ -23,7 +23,6 @@ class TreeNode(var `val`: Int){
     var right: TreeNode? = null
 }
 
-class Solution {
     fun bstFromPreorder(preorder: IntArray): TreeNode? {
     var newTree = TreeNode(preorder[0])
         var treeInst = newTree
@@ -56,8 +55,6 @@ class Solution {
             return
         }
     }
-
-}
 fun main(){
-    Solution().bstFromPreorder(intArrayOf(8, 5, 1, 7, 10, 12))
+    bstFromPreorder(intArrayOf(8, 5, 1, 7, 10, 12))
 }
